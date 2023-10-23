@@ -60,26 +60,28 @@ export default function Main(props){
                 </div>
                 
             </div>
-            <div className="product--info">
-                <h3>SNEAKER COMPANY</h3>
-                <h1>{product.name}</h1>
-                <p>{product.description}</p>
-            </div>
-            <div className="product--price--info">
-                <h1>${product.price()}.00</h1>
-                <div className="price--discount"><h3>{product.discount}%</h3></div>
-                <h3 className="price--before">${product.priceBeforeDis}.00</h3>            
-            </div>
-            <div className="product--to--cart--container">
-                <div className="amount--btn--container">
-                    <button className="amount--btn" onClick={removeProduct}>-</button>
-                    <h4>{orderAmount}</h4>
-                    <button className="amount--btn" onClick={addProduct}>+</button>
+            <div className="product--info--container">
+                <div className="product--info">
+                    <h3>SNEAKER COMPANY</h3>
+                    <h1>{product.name}</h1>
+                    <p>{product.description}</p>
                 </div>
-                <button className="btn add--cart--btn" onClick={addToCart}>
-                    <FontAwesomeIcon icon={faCartShopping} style={{color: "#ffffff",}} />
-                    Add to cart
-                </button>
+                <div className="product--price--info">
+                    <h1>${product.price()}.00</h1>
+                    <div className="price--discount"><h3>{product.discount}%</h3></div>
+                    <h3 className="price--before">${product.priceBeforeDis}.00</h3>            
+                </div>
+                <div className="product--to--cart--container">
+                    <div className="amount--btn--container">
+                        <button className="amount--btn" onClick={removeProduct}>-</button>
+                        <h4>{orderAmount}</h4>
+                        <button className="amount--btn" onClick={addProduct}>+</button>
+                    </div>
+                    <button className="btn add--cart--btn" onClick={addToCart}>
+                        <FontAwesomeIcon icon={faCartShopping} style={{color: "#ffffff",}} />
+                        Add to cart
+                    </button>
+            </div>
             </div>
         </main>
     )
