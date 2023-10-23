@@ -1,6 +1,7 @@
 html,body {
   font-family: 'Kumbh Sans', sans-serif;
   margin: 0;
+  padding: 0;
 }
 
 .container {
@@ -24,7 +25,7 @@ header {
   grid-column: 1 / -1;
   grid-row: 1/2;
   width: 100%;
-  padding: 1em
+  padding: 1em 0;
 }
 
 nav {
