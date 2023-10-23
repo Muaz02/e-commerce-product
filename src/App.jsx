@@ -3,7 +3,7 @@ import { RouterProvider,
   Route,
   createBrowserRouter, 
   createRoutesFromElements } from 'react-router-dom'
-import ProductPage from './pages/productPage'
+import ProductPage from './pages/ProductPage'
 
 const router = createBrowserRouter(createRoutesFromElements(
   <Route>

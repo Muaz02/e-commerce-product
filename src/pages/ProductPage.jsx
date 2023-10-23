@@ -4,7 +4,7 @@ import { cartData as data } from '../data'
 import Main from "../components/Main";
 import Cart from "../components/Cart";
 import Header from "../components/Header";
-import Menu from "../components/Menu/Menu";
+import Menu from "../components/Menu";
 
 export default function ProductPage(){
     const [cartData,setCartData] = React.useState(data)
