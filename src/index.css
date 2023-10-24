@@ -84,7 +84,8 @@ header {
 }
 
 .desktop--menu a:hover,
-.desktop--menu a:focus {
+.desktop--menu a:focus,
+.desktop--menu a:active {
   cursor: pointer;
   color: hsl(0, 0%, 0%);
   text-decoration: underline 5px solid orange;
