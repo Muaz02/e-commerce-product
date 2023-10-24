@@ -7,7 +7,7 @@ export default function Cart(props){
     const cartDataEl = props.cart.map((product)=>{
         return(
             <div className="cart--product--container" key={product.id}>
-                <img className="cart--products--img" src={product.thumbnail}/>
+                <img className="cart--products--img" src={product.thumbnail[1]}/>
                     <div className="cart--products--info">
                         <p>{product.name}</p>
                         <p>

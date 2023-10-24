@@ -1,13 +1,23 @@
 import React from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
-import { useRef } from 'react';
+import { faCartShopping, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import { products } from "../data";
 
 export default function Main(props){
+    const product = products[0]
     const [currentImgId,setCurrentImgId] = React.useState(0)
     const [orderAmount,setOrderAmount] = React.useState(0)
-    const product = products[0]
+    const [lightboxDisplay, setLightBoxDisplay] = React.useState(false)
+
+    const productThumbnailEl = product.thumbnail.map((thumb,index)=> {
+        return (
+            <img 
+                className={`product--thumbnail ${currentImgId==index?'active--thumbnail':''}`} 
+                src={product.thumbnail[index]} onClick={()=>setCurrentImgId(index)}
+                key={index}
+            />
+        )
+    })
 
     function addProduct(){
         setOrderAmount(prevAmount => prevAmount + 1)
@@ -46,31 +56,72 @@ export default function Main(props){
         setOrderAmount(0)
     }
 
+    function showImage() {      
+        setLightBoxDisplay(true);
+    }
+
+
+    console.log('rendered',lightboxDisplay)
     return (
         <main>
             <div className="product--img--container">
-                <img className='product--img' src={product.images[currentImgId]}/>
+                <img 
+                    className='product--img' 
+                    src={product.images[currentImgId]} 
+                    onClick={()=>showImage()}
+                />
+
                 <div className="product--img--btn--container">
-                    <button className="product--img--btn" onClick={prevImage}>
-                        <img src="icon-previous.svg"/>
+                    <button className="change--img--btn" onClick={prevImage}>
+                        <FontAwesomeIcon icon={faChevronLeft} />
                     </button>
-                    <button className="product--img--btn" onClick={nextImage}>
-                        <img src="icon-next.svg"/>
+                    <button className="change--img--btn" onClick={nextImage}>
+                       <FontAwesomeIcon icon={faChevronRight} />
                     </button>
                 </div>
-                
+
+                { lightboxDisplay ?
+                    <div className="lightbox--container">
+                        <img className="lightbox--img" src={product.images[currentImgId]}></img>
+                        
+                        <div className="product--thumbnail--container">
+                            {productThumbnailEl}
+                        </div> 
+
+                        <div className="lightbox--btn--container">
+                            <button className="change--img--btn" onClick={prevImage}>
+                                <FontAwesomeIcon icon={faChevronLeft} />
+                            </button>
+                            <button className="change--img--btn" onClick={nextImage}>
+                                <FontAwesomeIcon icon={faChevronRight} />
+                            </button>
+                        </div>
+                        
+                    </div>
+                    :<></> 
+                }
+
+                <div className="product--thumbnail--container">
+                    {productThumbnailEl}
+                </div> 
+
+
             </div>
+
+
             <div className="product--info--container">
                 <div className="product--info">
                     <h3>SNEAKER COMPANY</h3>
                     <h1>{product.name}</h1>
                     <p>{product.description}</p>
                 </div>
+
                 <div className="product--price--info">
                     <h1>${product.price()}.00</h1>
                     <div className="price--discount"><h3>{product.discount}%</h3></div>
                     <h3 className="price--before">${product.priceBeforeDis}.00</h3>            
                 </div>
+
                 <div className="product--to--cart--container">
                     <div className="amount--btn--container">
                         <button className="amount--btn" onClick={removeProduct}>-</button>
@@ -81,7 +132,9 @@ export default function Main(props){
                         <FontAwesomeIcon icon={faCartShopping} style={{color: "#ffffff",}} />
                         Add to cart
                     </button>
-            </div>
+                </div>
+
+
             </div>
         </main>
     )
