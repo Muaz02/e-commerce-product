@@ -81,6 +81,10 @@ header {
   margin-right: 1em;
   margin-top: .15em;
   color: hsl(219, 9%, 45%);
+  cursor: pointer;
+  color: hsl(0, 0%, 0%);
+  text-decoration: underline 5px solid orange;
+  text-underline-offset: 1.95em;
 }
 
 .desktop--menu a:hover,
