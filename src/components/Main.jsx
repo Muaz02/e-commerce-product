@@ -1,6 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCartShopping, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
+import { faCartShopping, faChevronLeft, faChevronRight, faX } from '@fortawesome/free-solid-svg-icons'
 import { products } from "../data";
 
 export default function Main(props){
@@ -82,6 +82,9 @@ export default function Main(props){
 
                 { lightboxDisplay ?
                     <div className="lightbox--container">
+                        <button className="lightbox--close--btn" onClick={()=>setLightBoxDisplay(false)}>
+                            <FontAwesomeIcon icon={faX}/>
+                        </button>
                         <img className="lightbox--img" src={product.images[currentImgId]}></img>
                         
                         <div className="product--thumbnail--container">
@@ -96,7 +99,7 @@ export default function Main(props){
                                 <FontAwesomeIcon icon={faChevronRight} />
                             </button>
                         </div>
-                        
+
                     </div>
                     :<></> 
                 }

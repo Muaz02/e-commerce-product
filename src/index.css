@@ -373,6 +373,18 @@ main {
   left: 20%;
 }
 
+.lightbox--close--btn {
+  position: absolute;
+  top: 1;
+  right: 25%;
+  cursor: pointer;
+  z-index: 2;
+  background: none;
+  border: none;
+  color: hsl(26, 100%, 55%);
+  font-weight: 700;
+}
+
 .lightbox--img {
   width:50%;
   height:auto;
