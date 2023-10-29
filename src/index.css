@@ -588,6 +588,7 @@ main {
   }
 
   .product--img--btn--container {
+    display: none;
     width: 90%;
     top: 40%;
   }
