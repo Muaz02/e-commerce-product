@@ -50,7 +50,7 @@ export default function Main(props){
             else {
                 return [...prevCart,{...product,amount:orderAmount}]
             }
-            
+            props.setIsCartChecked(false)
         }
         )
         setOrderAmount(0)

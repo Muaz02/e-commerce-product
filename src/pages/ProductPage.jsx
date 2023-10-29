@@ -10,6 +10,8 @@ export default function ProductPage(){
     const [cartData,setCartData] = React.useState(data)
     const [isCartOpened,setIsCartOpened] = React.useState(false)
     const [isMenuOpened,setIsMenuOpened] = React.useState(false)
+    const [isOrderChecked,setIsOrderChecked] = React.useState(false)
+
     const menuRef = useRef(null);
     const cartRef = useRef(null)
 
@@ -59,10 +61,31 @@ export default function ProductPage(){
 
     return(            
             <div className="container"> 
-                <Header toggleCart={toggleCart} openMenu={openMenu} isCartOpened={isCartOpened}/>
-                <Menu refProp={menuRef} closeMenu={closeMenu} isMenuOpened={isMenuOpened}/>
-                <Cart refProp={cartRef} isCartOpened={isCartOpened} cart={cartData} removeProduct={removeProduct}/>
-                <Main setCartData={setCartData}/>
+                <Header 
+                  toggleCart={toggleCart} 
+                  openMenu={openMenu} 
+                  isCartOpened={isCartOpened}
+                />
+                <Menu 
+                  refProp={menuRef} 
+                  closeMenu={closeMenu} 
+                  isMenuOpened={isMenuOpened}
+                />
+                <Cart 
+                  refProp={cartRef} 
+                  isCartOpened={isCartOpened} 
+                  setIsCartOpened={setIsCartOpened}
+                  cart={cartData} 
+                  setCartData={setCartData} 
+                  removeProduct={removeProduct}
+                  isOrderChecked={isOrderChecked}
+                  setIsOrderChecked={setIsOrderChecked}
+                />
+                <Main 
+                  setCartData={setCartData} 
+                  isOrderChecked={isOrderChecked} 
+                  setIsOrderChecked={setIsOrderChecked}
+                />
             </div>
     )
 }

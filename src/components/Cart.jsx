@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
@@ -22,18 +22,30 @@ export default function Cart(props){
         )
     })
 
+    function checkout(){
+        props.setCartData([])
+        props.setIsOrderChecked(true)
+        setTimeout(()=>{
+            props.setIsOrderChecked(false)
+            props.setIsCartOpened(false)
+        },2250)
+    }
     
     return(
         <div className={`cart ${props.isCartOpened? 'active':'inactive'}`} ref={props.refProp}>
-            <h3 className="cart--title">Cart</h3>
-            <hr className="cart--line"></hr>
+            <header>
+                <h3 className="cart--title">Cart</h3>
+                <hr className="cart--line"></hr>
+            </header>
             {
                 props.cart.length>0?
                 <div className="cart--products--container">
                     {cartDataEl}
-                    <button className="btn cart--checkout--btn">Checkout</button>
+                    <button className="btn cart--checkout--btn" onClick={()=>checkout()}>Checkout</button>
                 </div>:
-                <h3 className="cart--empty--text">Your cart is empty.</h3>
+                props.isOrderChecked?
+                    <p className="order--set--text">We got your order!</p>:
+                    <h3 className="cart--empty--text">Empty cart :(</h3>
             }
         </div>
     )   
